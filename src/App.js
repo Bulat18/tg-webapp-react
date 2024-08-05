@@ -15,7 +15,8 @@ function App() {
   return (
     <div className="App">
       work
-      <button onClick={onClose}>Close</button> //onClick - слушатель событий 
+      <button onClick={onClose}>Close</button>
+      {/* onClick - слушатель событий */}
     </div>
   );
 }
