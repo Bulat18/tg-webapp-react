@@ -1,6 +1,5 @@
 import React from 'react';
-import {useTelegram} from '/Users/bulath/PycharmProjects/FrontEnd/TG-webapp-market/tg-react/src/components/hooks/usetelegram';
-
+import {useTelegram} from '../../hooks/useTelegram'
 
 const Header = () =>{
     const {user, onClose} = useTelegram();
