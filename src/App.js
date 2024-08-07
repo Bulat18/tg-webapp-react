@@ -21,6 +21,5 @@ function App() {
     </div>
   );
 }
-import Header from './components/Header/Header.jsx';
 
 export default App;
