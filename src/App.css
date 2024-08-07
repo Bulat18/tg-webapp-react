@@ -8,3 +8,14 @@ body{
   background: var(--tg-theme-bg-color);
   color: var(--tg-theme-text-color);
 }
+button{
+  padding: 10px 20px;
+  color: white;
+  background-color: black;
+  border:none;
+  border-style: solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
