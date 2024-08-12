@@ -14,12 +14,21 @@ const Form = () => {
             street,
             subject
         }
-        console.log('Отправка данных:', data);
+
         tg.sendData(JSON.stringify(data));
     }, [country, street, subject])
 
+    const stringdata = useCallback(()=>{
+        tg.sendData("some string that we need to send");
+    },[])
+
+    useEffect( () => {
+        Telegram.WebApp.onEvent('mainButtonClicked', stringdata);
+    },[stringdata])
+
     useEffect(() => {
-        tg.onEvent('mainButtonClicked', onSendData)
+        Telegram.WebApp.onEvent('mainButtonClicked', onSendData)
+
         return () => {
             tg.offEvent('mainButtonClicked', onSendData)
         }
@@ -27,7 +36,9 @@ const Form = () => {
 
     useEffect(() => {
         tg.MainButton.setParams({
-            text: 'Отправить данные'
+            text: 'Отправить данные',
+
+
         })
     }, [])
 
