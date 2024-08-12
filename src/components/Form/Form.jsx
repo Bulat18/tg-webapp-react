@@ -6,7 +6,12 @@ const Form = () => {
     const [country, setCountry] = useState('');
     const [street, setStreet] = useState('');
     const [subject, setSubject] = useState('physical');
-    const {tg} = useTelegram();
+    const { tg } = useTelegram();
+
+
+    useEffect(() => {
+        console.log("Telegram WebApp инициализирован", tg);
+    }, []);
 
     const onSendData = useCallback(() => {
         console.log("Данные для отправки:", data);
@@ -26,18 +31,22 @@ const Form = () => {
 
 
     useEffect(() => {
-        console.log("Регистрация обработчика mainButtonClicked");
-        tg.onEvent('mainButtonClicked', onSendData);
+        if (tg) {
+            console.log("Регистрация обработчика mainButtonClicked");
+            tg.onEvent('mainButtonClicked', onSendData);
 
-        return () => {
-            console.log("Отмена регистрации обработчика mainButtonClicked");
-            tg.offEvent('mainButtonClicked', onSendData)
+            return () => {
+                console.log("Отмена регистрации обработчика mainButtonClicked");
+                tg.offEvent('mainButtonClicked', onSendData);
+            };
+        } else {
+            console.error("tg не инициализирован");
         }
-    }, [onSendData]);
+    }, [tg, onSendData]);
 
     useEffect(() => {
         tg.MainButton.setParams({
-            text: 'Send data', 
+            text: 'Send data',
         })
     }, []);
 
