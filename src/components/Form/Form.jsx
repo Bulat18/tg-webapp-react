@@ -9,6 +9,7 @@ const Form = () => {
     const {tg} = useTelegram();
 
     const onSendData = useCallback(() => {
+        console.log("Данные для отправки:", data);
         const data = {
             country,
             street,
@@ -16,23 +17,18 @@ const Form = () => {
         }
 
         tg.sendData(JSON.stringify(data));
-    }, [country, street, subject])
+    }, [country, street, subject]);
 
-    const stringdata = useCallback(()=>{
-        tg.sendData("some string that we need to send");
-    },[])
-
-    useEffect( () => {
-        Telegram.WebApp.onEvent('mainButtonClicked', stringdata);
-    },[stringdata])
 
     useEffect(() => {
-        Telegram.WebApp.onEvent('mainButtonClicked', onSendData)
+        console.log("Регистрация обработчика mainButtonClicked");
+        Telegram.WebApp.onEvent('mainButtonClicked', onSendData);
 
         return () => {
+            console.log("Отмена регистрации обработчика mainButtonClicked");
             tg.offEvent('mainButtonClicked', onSendData)
         }
-    }, [onSendData])
+    }, [onSendData]);
 
     useEffect(() => {
         tg.MainButton.setParams({
@@ -40,7 +36,7 @@ const Form = () => {
 
 
         })
-    }, [])
+    }, []);
 
     useEffect(() => {
         if(!street || !country) {
