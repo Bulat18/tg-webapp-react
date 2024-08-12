@@ -15,14 +15,19 @@ const Form = () => {
             street,
             subject
         }
-
-        tg.sendData(JSON.stringify(data));
+        try {
+            tg.sendData(JSON.stringify(data));
+            console.log("Попытка закрытия Web App");
+            tg.close();
+        } catch (error) {
+            console.error("Ошибка при закрытии Web App:", error);
+        }
     }, [country, street, subject]);
 
 
     useEffect(() => {
         console.log("Регистрация обработчика mainButtonClicked");
-        Telegram.WebApp.onEvent('mainButtonClicked', onSendData);
+        tg.onEvent('mainButtonClicked', onSendData);
 
         return () => {
             console.log("Отмена регистрации обработчика mainButtonClicked");
