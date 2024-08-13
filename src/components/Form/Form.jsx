@@ -18,12 +18,10 @@ const Form = () => {
     }, [country, street, subject])
 
     useEffect(() =>{
-        if (tg.MainButton.isVisible()){
-            tg.onEvent('mainButtonClicked', onSendData)
-
+        tg.onEvent('mainButtonClicked', onSendData);
         return () => {
-            tg.offEvent('mainButtonClicked', onSendData)
-            }
+            tg.offEvent('mainButtonClicked', onSendData);
+
         }
     }, [onSendData])
 
