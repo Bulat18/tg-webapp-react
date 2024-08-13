@@ -9,10 +9,9 @@ import Form from './components/Form/Form';
 
 
 function App() {
-  const { onToggleButton, tg } = useTelegram();
+  const { tg, onToggleButton } = useTelegram();
 
   useEffect(() => {
-    tg.expand();
     tg.ready(); //приложение польностью проинициализировалось
     // и его можно польностью отрисовывать
   }, []);
@@ -21,6 +20,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <button onClick={onToggleButton}>Show Button</button>
 
       <Routes>
           <Route index element = {<Productlist />} />
