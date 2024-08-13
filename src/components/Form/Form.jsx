@@ -31,16 +31,14 @@ const Form = () => {
 
 
     useEffect(() => {
-        if (tg) {
+        if (tg.MainButton.is_visible()) {
             console.log("Регистрация обработчика mainButtonClicked");
-            tg.onEvent('mainButtonClicked', onSendData);
+            tg.onEvent("mainButtonClicked", onSendData);
 
             return () => {
                 console.log("Отмена регистрации обработчика mainButtonClicked");
-                tg.offEvent('mainButtonClicked', onSendData);
+                tg.offEvent("mainButtonClicked", onSendData);
             };
-        } else {
-            console.error("tg не инициализирован");
         }
     }, [tg, onSendData]);
 
