@@ -6,47 +6,29 @@ const Form = () => {
     const [country, setCountry] = useState('');
     const [street, setStreet] = useState('');
     const [subject, setSubject] = useState('physical');
-    const { tg } = useTelegram();
-
-
-    useEffect(() => {
-        console.log("Telegram WebApp инициализирован", tg);
-    }, []);
+    const {tg} = useTelegram();
 
     const onSendData = useCallback(() => {
-        console.log("Данные для отправки:", data);
         const data = {
             country,
             street,
             subject
         }
-        try {
-            tg.sendData(JSON.stringify(data));
-            console.log("Попытка закрытия Web App");
-            tg.close();
-        } catch (error) {
-            console.error("Ошибка при закрытии Web App:", error);
-        }
-    }, [country, street, subject]);
-
+        tg.sendData(JSON.stringify(data));
+    }, [country, street, subject])
 
     useEffect(() => {
-        if (tg.MainButton.is_visible()) {
-            console.log("Регистрация обработчика mainButtonClicked");
-            tg.onEvent("mainButtonClicked", onSendData);
-
-            return () => {
-                console.log("Отмена регистрации обработчика mainButtonClicked");
-                tg.offEvent("mainButtonClicked", onSendData);
-            };
+        tg.onEvent('mainButtonClicked', onSendData)
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
         }
-    }, [tg, onSendData]);
+    }, [onSendData])
 
     useEffect(() => {
         tg.MainButton.setParams({
-            text: 'Send data',
+            text: 'Отправить данные'
         })
-    }, []);
+    }, [])
 
     useEffect(() => {
         if(!street || !country) {
