@@ -9,4 +9,5 @@
     margin-left:auto;
     font-family: Arial;
     color: var(--tg-theme-text-color);
+    background: var(--tg-theme-header-bg-color);
 }
