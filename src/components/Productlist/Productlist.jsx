@@ -3,7 +3,7 @@ import './Productlist.css';
 
 const Productlist = () =>{
     return (
-        <div>
+        <div class="naming">
             Productlist
         </div>
     );
