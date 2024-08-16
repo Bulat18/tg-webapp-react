@@ -7,7 +7,9 @@
 }
 .username{
     margin-left:auto;
-    font-family: Arial;
+    font-family: New Amsterdam;
     color: var(--tg-theme-text-color);
-    background: var(--tg-theme-header-bg-color);
+    font-size: 16px;
+
+
 }
