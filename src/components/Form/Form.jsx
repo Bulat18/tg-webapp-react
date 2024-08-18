@@ -19,14 +19,12 @@ const Form = () => {
     }, [country, street, subject])
 
     useEffect(() => {
-        const handleMainButtonClick = () => {
-            onSendData();
-        };
-        tg.onEvent('mainButtonClicked', handleMainButtonClick)
+
+        tg.onEvent('mainButtonClicked', onSendData)
         return () => {
-            tg.offEvent('mainButtonClicked', handleMainButtonClick)
+            tg.offEvent('mainButtonClicked', onSendData)
         }
-    }, [onSendData, tg])
+    }, [onSendData])
 
     useEffect(() => {
         tg.MainButton.setParams({
