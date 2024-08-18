@@ -24,7 +24,7 @@ const getTotalPrice = (items=[])=>{
 const Productlist = () =>{
     const [addedItems, setAddedItems] = useState([]);
 
-    const {tg, queryId}  = useTelegram ();
+    const {tg}  = useTelegram();
 
     const onAdd = (product) =>{
         const alreadyAdded = addedItems.find(item => item.id === product.id);
@@ -41,7 +41,7 @@ const Productlist = () =>{
         if (newItems.lenght === 0){
             tg.MainButton.hide();
         } else{
-            tg.MainButton.sgow();
+            tg.MainButton.show();
             tg.MainButton.setParams({
                 text: `Купить ${getTotalPrice(newItems)}`
             })
