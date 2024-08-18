@@ -19,5 +19,5 @@ const ProductItem = ({product, className, onAdd}) =>{
             </Button>
         </div>
     );
-}
+};
 export default ProductItem;

@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { useTelegram } from '../hooks/useTelegram';
+
 import './Productlist.css';
 import  ProductItem from '../ProductItem/ProductItem';
-
+import {useCallback, useEffect} from "react";
 
 const products = [
     {id: '1', title:'Куртка', price:12000, description:"Зеленого цвета, теплая"},
@@ -21,7 +23,9 @@ const getTotalPrice = (items=[])=>{
 
 const Productlist = () =>{
     const [addedItems, setAddedItems] = useState([]);
-    const {tg}  = useTelegram ();
+
+    const {tg, queryId}  = useTelegram ();
+
     const onAdd = (product) =>{
         const alreadyAdded = addedItems.find(item => item.id === product.id);
         let newItems = [];
