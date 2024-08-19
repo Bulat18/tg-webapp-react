@@ -1,4 +1,5 @@
 .header{
+    font-family: Poppins;
     width: 100%;
     height: 50px;
     display: flex;
@@ -7,7 +8,7 @@
 }
 .username{
     margin-left:auto;
-    font-family: New Amsterdam;
+
     color: var(--tg-theme-text-color);
     font-size: 16px;
 
