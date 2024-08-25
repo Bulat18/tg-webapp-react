@@ -6,7 +6,7 @@ import  ProductItem from '../ProductItem/ProductItem';
 import {useCallback, useEffect} from "react";
 
 const products = [
-    {id: '1', title:'Куртка', price:12000, description:"Зеленоая, теплая"},
+    {id: '1', title:'Куртка', price:12000, description:"Зеленая, теплая"},
     {id: '2', title:'Джинсы', price:7000, description:"Синие, теплая"},
     {id: '3', title:'Футболка', price:3000, description:"Белого цвета, дышащая"},
     {id: '4', title:'Шорты', price:1200, description:"Черного цвета, длинные"},
