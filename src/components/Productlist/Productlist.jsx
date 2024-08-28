@@ -46,7 +46,6 @@ const Productlist = () =>{
             tg.offEvent('mainButtonClicked', onSendData)
         }
     }, [onSendData])
-
     const onAdd = (product) =>{
         const alreadyAdded = addedItems.find(item => item.id === product.id);
         let newItems = [];
@@ -64,7 +63,7 @@ const Productlist = () =>{
         } else{
             tg.MainButton.show();
             tg.MainButton.setParams({
-                text: `Купить ${getTotalPrice(newItems)}`
+                text: `Buy ${getTotalPrice(newItems)}`
             })
         }
     }
