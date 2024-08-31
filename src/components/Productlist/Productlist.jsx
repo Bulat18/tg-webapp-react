@@ -28,12 +28,12 @@ const Productlist = () =>{
     const onSendData = useCallback(() => {
         const data = {
             products: addedItems,
-            totalPrice: getTotalPrice(addedItems)
+            totalPrice: getTotalPrice(addedItems),
         }
         fetch('http://localhost:8000', {
             method: 'POST',
             headers:{
-                'Conyent-Type':'application/json',
+                'Content-Type':'application/json',
             },
             body: JSON.stringify(data)
         })
