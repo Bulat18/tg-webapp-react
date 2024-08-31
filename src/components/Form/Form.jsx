@@ -22,7 +22,7 @@ const Form = () => {
         tg.onEvent('mainButtonClicked', onSendData);
 
         return () => {
-            console.log('Removing event listener for mainButtonClicked');
+            console.log('Deletinf');
             tg.offEvent('mainButtonClicked', onSendData);
         };
     }, [onSendData]);
