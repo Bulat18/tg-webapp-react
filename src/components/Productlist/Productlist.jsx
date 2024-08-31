@@ -31,7 +31,7 @@ const Productlist = () =>{
             totalPrice: getTotalPrice(addedItems),
             queryId
         }
-        fetch('http://localhost:8000', {
+        fetch('http://localhost:8000/web-data', {
             method: 'POST',
             headers:{
                 'Content-Type':'application/json',
@@ -59,7 +59,7 @@ const Productlist = () =>{
 
         setAddedItems(newItems);
 
-        if (newItems.lenght === 0){
+        if (newItems.length === 0){
             tg.MainButton.hide();
         } else{
             tg.MainButton.show();
