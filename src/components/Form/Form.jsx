@@ -18,11 +18,16 @@ const Form = () => {
     }, [country, street, subject])
 
     useEffect(() => {
-        tg.onEvent('mainButtonClicked', onSendData)
+        console.log('Setting up event listener for mainButtonClicked');
+        tg.onEvent('mainButtonClicked', onSendData);
+
         return () => {
-            tg.offEvent('mainButtonClicked', onSendData)
-        }
-    }, [onSendData])
+            console.log('Removing event listener for mainButtonClicked');
+            tg.offEvent('mainButtonClicked', onSendData);
+        };
+    }, [onSendData]);
+
+    console.log('Telegram WebApp:', tg);
 
     useEffect(() => {
         tg.MainButton.setParams({

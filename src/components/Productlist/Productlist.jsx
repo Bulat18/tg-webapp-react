@@ -42,11 +42,16 @@ const Productlist = () =>{
     }, [addedItems])
 
     useEffect(() => {
-        tg.onEvent('mainButtonClicked', onSendData)
+        console.log('Setting up event listener for mainButtonClicked');
+        tg.onEvent('mainButtonClicked', onSendData);
+
         return () => {
-            tg.offEvent('mainButtonClicked', onSendData)
-        }
-    }, [onSendData])
+            console.log('Removing event listener for mainButtonClicked');
+            tg.offEvent('mainButtonClicked', onSendData);
+        };
+    }, [onSendData]);
+
+    console.log('Telegram WebApp:', tg);
     const onAdd = (product) =>{
         const alreadyAdded = addedItems.find(item => item.id === product.id);
         let newItems = [];
