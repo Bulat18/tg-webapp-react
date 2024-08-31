@@ -12,9 +12,9 @@ function App() {
   const { tg } = useTelegram();
 
   useEffect(() => {
-    tg.ready(); //приложение польностью проинициализировалось
-    // и его можно польностью отрисовывать
-  }, []);
+    tg.ready();
+    console.log('Telegram WebApp is ready');
+}, []);
 
 
   return (
